@@ -1,33 +1,114 @@
+@font-face {
+  font-family: Temp;
+  src: url("fonts/Temp.ttf") format("truetype");
+}
+
 @tailwind base;
+@layer base {
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  ::selection {
+    background: rgb(34, 197, 94);
+    color: white;
+  }
+  .rotate-card-y-0 {
+    transform: rotateY(0) scaleX(-100%);
+  }
+  .rotate-x-180-controller {
+    transform: rotateX(180deg) translateY(50%);
+  }
+  .rotate-x-180 {
+    transform: rotateX(180deg);
+  }
+  .rotate-x-0 {
+    transform: rotateX(0);
+  }
+
+  /* SCROOL DOWN */
+  .arrows {
+    width: 40px;
+    height: 32px;
+  }
+
+  .arrows path {
+    stroke: #00ff99;
+    fill: transparent;
+    stroke-width: 1px;
+    animation: arrow 5s infinite;
+    -webkit-animation: arrow 5s infinite;
+  }
+
+  @keyframes arrow {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes arrow /*Safari and Chrome*/ {
+    0% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .arrows path.a1 {
+    animation-delay: -1s;
+    -webkit-animation-delay: -1s; /* Safari 和 Chrome */
+  }
+
+  .arrows path.a2 {
+    animation-delay: -0.5s;
+    -webkit-animation-delay: -0.5s; /* Safari 和 Chrome */
+  }
+
+  .arrows path.a3 {
+    animation-delay: 0s;
+    -webkit-animation-delay: 0s; /* Safari 和 Chrome */
+  }
+  .text-shadow {
+    text-shadow: -2px 2px 0 #00aa00;
+  }
+
+  .play-clip-path {
+    clip-path: polygon(
+      100% 50%,
+      0 0,
+      0 100%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%,
+      100% 50%
+    );
+  }
+  .pause-clip-path {
+    clip-path: polygon(40% 0, 0 0, 0 100%, 40% 100%, 60% 100%, 100% 100%, 100% 0, 60% 0, 60% 100%, 40% 100%);
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.rotate-x-180 {
+  transform: rotateX(180deg);
 }
